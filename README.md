@@ -6,7 +6,7 @@
 
 [лабораторная №1](https://github.com/georgedem975/DB/blob/master/lab-1/README.md)
 
-[лабораторная №2]()
+[лабораторная №2](https://github.com/georgedem975/DB/tree/master/lab-2)
 
 [лабораторная №3]()
 
