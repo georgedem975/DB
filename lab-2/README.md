@@ -78,10 +78,10 @@ HAVING count(*)>5
 существует более одного чека, SalesORDERID, с одинаковой датой
 
 ```sql
-SELECT s.CustomerID, cast(s.DueDate as date) as duedate, count(s.SalesOrderID) as countdays
-FROM Sales.SalesOrderHeader as s
-GROUP BY s.CustomerID, cast(s.DueDate as date)
-having count(s.SalesOrderID) > 1
+select p.CustomerID
+from Sales.SalesOrderHeader as p
+group by p.CustomerID, p.OrderDate
+having count(*) > 1
 ```
 
 7. Найти и вывести на экран все номера чеков, на которые приходится более трех продуктов.
@@ -127,11 +127,10 @@ HAVING count(*) > 10
 одном экземпляре за одну покупку.
 
 ```sql
-SELECT p.SalesOrderID, sum(OrderQty) as Amount
+SELECT p.ProductID
 FROM Sales.SalesOrderDetail as p
-WHERE p.OrderQty is not null
-GROUP BY p.SalesOrderID
-ORDER BY sum(OrderQty)
+GROUP BY p.ProductID, p.OrderQty
+HAVING 1=ALL(SELECT p.OrderQty)
 ```
 
 12. Найти и вывести на экран номер чека, SalesORDERID, на который приходится
